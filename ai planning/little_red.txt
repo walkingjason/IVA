@@ -1,0 +1,45 @@
+Initial state: alive(Red), alive(Granny), alive(Wolf), hasCake(Red), atTown(Red), atForest(Wolf), atCabin(Granny), isWolf(Wolf)
+Goal state: alive(Red), alive(Granny), ~alive(Wolf), hasCake(Granny)
+
+
+Actions:
+    MovetoTown(Person)
+    Preconditions: alive(Person), atForest(Person)
+    Postconditions: !atForest(Person), atTown(Person)
+    
+    MovetoForest(Person)
+    Preconditions: alive(Person)
+    Postconditions: !atTown(Person), !atCabin(Person), atForest(Person)
+
+    ExploreForest(Person)
+    Preconditions: alive(Person), atForest(Person)
+    Postconditions: seesWolf(Person)
+
+    MovetoCabin(Person)
+    Preconditions: alive(Person), atForest(Person)
+    Postconditions: !atForest(Person), atCabin(Person)
+
+    GiveCake(Person1, Person2)
+    Preconditions: alive(Person1), atCabin(Person1), atCabin(Person2), hasCake(Person1)
+    Postconditions: !hasCake(Person1), hasCake(Person2)
+
+    WolfFeasts(Wolf, Person)
+    Preconditions: alive(Wolf), alive(Person), isWolf(Wolf)
+    Postconditions: !alive(Person)
+
+    HuntWolf(Person)
+    Preconditions: alive(Person), alive(Wolf), withHuntsman(Person), seesWolf(Person)
+    Postconditions: !alive(Wolf)
+
+    VisitHuntsman(Person)
+    Preconditions: alive(Person), atForest(Person)
+    Postconditions: withHuntsman(Person)
+
+    Allergic(Person)
+    Preconditions: alive(Person), hasCake(Person), isAllergic(Person)
+    Postconditions: !alive(Person)
+
+
+
+
+
